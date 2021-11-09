@@ -16,19 +16,19 @@ const getCharacters = async () => {
   };
 
   const characters = await dynamoClient.scan(params).promise();
-  console.log(characters);
+  // console.log(characters);
   return characters;
 };
 
-const getCharactersById = async () => {
+const getCharactersById = async (ud) => {
   const params = {
     TableName: TABLE_NAME,
     Key: {
-      id,
+      ud,
     },
   };
 
-  return await dynamoClient.put(params).promise();
+  return await dynamoClient.get(params).promise();
 };
 
 const addOrUpdateCharacter = async (character) => {
@@ -40,11 +40,11 @@ const addOrUpdateCharacter = async (character) => {
   return await dynamoClient.put(params).promise();
 };
 
-const deleteCharacter = async (id) => {
+const deleteCharacter = async (ud) => {
   const params = {
     TableName: TABLE_NAME,
     Key: {
-      id,
+      ud,
     },
   };
 
