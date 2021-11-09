@@ -20,6 +20,7 @@ const getCharacters = async () => {
   return characters;
 };
 
+
 const getCharactersById = async () => {
   const params = {
     TableName: TABLE_NAME,
@@ -39,34 +40,6 @@ const addOrUpdateCharacter = async (character) => {
 
   return await dynamoClient.put(params).promise();
 };
-
-const hp = {
-  ud: "0",
-  name: "Harry Potter",
-  species: "human",
-  gender: "male",
-  house: "Gryffindor",
-  dateOfBirth: "31-07-1980",
-  yearOfBirth: 1980,
-  wizard: true,
-  ancestry: "half-blood",
-  eyeColour: "green",
-  hairColour: "black",
-  wand: {
-    wood: "holly",
-    core: "phoenix feather",
-    length: 11,
-  },
-  patronus: "stag",
-  hogwartsStudent: true,
-  hogwartsStaff: false,
-  actor: "Daniel Radcliffe",
-  alternate_actors: [""],
-  alive: true,
-  image: "http://hp-api.herokuapp.com/images/harry.jpg",
-};
-
-addOrUpdateCharacter(hp);
 
 const deleteCharacter = async (character) => {
   const params = {
