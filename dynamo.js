@@ -20,7 +20,6 @@ const getCharacters = async () => {
   return characters;
 };
 
-
 const getCharactersById = async () => {
   const params = {
     TableName: TABLE_NAME,
@@ -41,10 +40,12 @@ const addOrUpdateCharacter = async (character) => {
   return await dynamoClient.put(params).promise();
 };
 
-const deleteCharacter = async (character) => {
+const deleteCharacter = async (id) => {
   const params = {
     TableName: TABLE_NAME,
-    Item: character,
+    Key: {
+      id,
+    },
   };
 
   return await dynamoClient.delete(params).promise();
